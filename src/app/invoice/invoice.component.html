@@ -1,0 +1,69 @@
+<h1>Transaction Manager</h1>
+<div class="border">
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">Search Filter Actions</legend>
+
+    <div class="row">
+      <div class="col-xs-2 form-group">
+        <label>Search By:</label>
+        <select class="form-control" [(ngModel)]="searchBySelected">
+          <option value="Name">Name</option>
+          <option value="Invoice">Invoice</option>
+        </select>
+      </div>
+      <div class="col-xs-2 form-group">
+        <label>In Invoice Status</label>
+        <select class="form-control" [(ngModel)]="invoiceStatusSelected">
+            <option>Outstanding</option>
+            <option>Paid</option>
+        </select>
+      </div>
+      <div class="col-xs-2 form-group">
+        <label>Search Text</label>
+        <input class="form-control" type="text" [(ngModel)]="searchText">
+      </div>
+    </div>
+
+  </fieldset>
+  <p class="bg-info ">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"><a> Add a Pre-Capture (Pre-Copay, Up-fromt Payments</a></span>
+      <span class="glyphicon glyphicon-usd" aria-hidden="true"><a> Refaunds {{invoiceStatusSelected}}</a></span>
+  </p>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Transaction Type</th>
+      <th>Patient Name</th>
+      <th>Invoice #</th>
+      <th>Invoice Date</th>
+      <th>Balance</th>
+      <th>Amount</th>
+      <th>Method</th>
+      <th>Data Recive</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let invoice of invoices 
+          | invoiceStatusFilter:invoiceStatusSelected 
+          | invoiceNameOrIdFilter: {field: searchBySelected , stringSearch: searchText} ">
+
+      <td> {{invoice.transactionType}} </td>
+      <td>{{invoice.patientName}}</td>
+      <td>{{invoice.invoiceNumber}}</td>
+      <td>{{invoice.date}}</td>
+      <td>{{invoice.balance}}</td>
+      <td>
+        <invoice-amount [invoice]="invoice"></invoice-amount>
+      </td>
+      <td>{{invoice.method}}</td>
+      <td>{{invoice.dateReceived}}</td>
+      <td>
+        <invoice-note [invoice]="invoice"></invoice-note>
+      </td>
+      <td><button *ngIf="invoice.transactionType == 'Outstanding'" (click)="invoicePost(invoice)" type="button" class="btn btn-primary btn-sm">POST</button></td>
+    </tr>
+  </tbody>
+</table>

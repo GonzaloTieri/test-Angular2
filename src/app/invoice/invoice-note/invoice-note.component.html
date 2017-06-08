@@ -1,0 +1,22 @@
+<a (click)="staticModal.show()" ><span class="glyphicon glyphicon-paperclip">&nbsp;</span></a>
+<!--<button type="button" class="btn btn-primary" (click)="staticModal.show()">Static modal</button>-->
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Note</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <textarea rows=4 class="form-control" placeholder="abstract..." [(ngModel)]="newNote"></textarea>
+
+        <button   type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+        <button (click)="staticModal.hide()" type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+      </div>
+    </div>
+  </div>
+</div>

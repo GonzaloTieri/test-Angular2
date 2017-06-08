@@ -1,0 +1,22 @@
+[
+    {
+        "productId": 1,
+        "productName": "Milanesas",
+        "productCode": "M1",
+        "elaborationDate": "1 de Mayo",
+        "listFilter": "Milanesas",
+        "price": 32.99,
+        "starRating": 4.2,
+        "imageUrl": "http://www.verydeli.com.ar/sites/default/files/recetas/milanesa-01.jpg"
+    },
+    {
+        "productId": 2,
+        "productName": "Hamburguesas de Pollo",
+        "productCode": "H1",
+        "elaborationDate": "15 de Mayo",
+        "listFilter": "Hamburguesas de Pollo",
+        "price": 40.00,
+        "starRating": 3,
+        "imageUrl": "http://2.bp.blogspot.com/-dgOS-mw6lFw/UPRFYjIskSI/AAAAAAAAAEo/0lNtTLOcDnM/s1600/hamburguesa-vacuno.jpg"
+    }    
+]

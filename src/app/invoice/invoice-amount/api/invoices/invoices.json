@@ -1,0 +1,13 @@
+[
+    {
+        "transactionType": "Paymet",
+        "patientName": "John",
+        "invoiceNumber": 888,
+        "date": "01/27/2017",
+        "balance": "100",
+        "amount": "100",
+        "method": "check",
+        "dateReceived": "2/10/2017",
+        "note": "this is a note"
+  }
+]
