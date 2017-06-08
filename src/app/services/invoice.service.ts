@@ -12,7 +12,7 @@ import 'rxjs/add/operator/do';
 
 @Injectable()
 export class InvoiceService {
-  private _getInvoicesUrl = "api/invoices/invoices.json";
+  private _getInvoicesUrl = "http://www.mocky.io/v2/593958ee120000ef0da675d8";
 
   constructor(private _http : Http) { }
 

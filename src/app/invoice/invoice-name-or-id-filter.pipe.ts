@@ -13,10 +13,6 @@ export class InvoiceNameOrIdFilterPipe implements PipeTransform {
     if (filterBy.field === 'Invoice'){
       return filterBy.stringSearch ? value.filter((invoice: IInvoice) => invoice.invoiceNumber.toString().indexOf(filterBy.stringSearch) !== -1 ) : value;
     }
-
-
-
-
   }
 
 }

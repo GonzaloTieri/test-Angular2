@@ -22,10 +22,18 @@ export class InvoiceComponent implements OnInit {
     this.searchText = '';
     this.searchBySelected = 'Name';
     this.invoiceStatusSelected = 'Outstanding';
-    this.invoices = INVOICES;
-    // this._invoiceService.getInvoices()
-    //         .subscribe( invoices => this.invoices = invoices,
-    //                     error => this.errorMessage = <any>error);
+    //this.invoices = INVOICES;
+    let self =  this;
+    this._invoiceService.getInvoices()
+      .subscribe( function(data){
+              self.invoices = data;
+            },
+            function(error) {
+              self.errorMessage = <any>error;
+              self._toastrService.error("Sorry, some", 'Error' );
+              console.log(self.errorMessage);
+            });
+
   }
 
   invoicePost(invoice : IInvoice) : void {
@@ -60,51 +68,51 @@ export class InvoiceComponent implements OnInit {
 
 const INVOICES : IInvoice[] = [
   {
-    invoiceId: 1,
-    transactionType: 'Paid',
-    patientName: 'John',
-    invoiceNumber: 88123,
-    date: '01/27/2017',
-    balance: 100,
-    amount: 100,
-    method: 'check',
-    dateReceived: '2/10/2017',
-    note: 'this is a note'
+    "invoiceId": 1,
+    "transactionType": "Paid",
+    "patientName": "John",
+    "invoiceNumber": 88123,
+    "date": "01/27/2017",
+    "balance": 100,
+    "amount": 100,
+    "method": "check",
+    "dateReceived": "2/10/2017",
+    "note": "this is a note"
   },
   {
-    invoiceId: 2,
-    transactionType: 'Outstanding',
-    patientName: 'John',
-    invoiceNumber: 8814,
-    date: '01/27/2017',
-    balance: 100,
-    amount: 100,
-    method: 'check',
-    dateReceived: '2/10/2017',
-    note: 'this is a note'
+    "invoiceId": 2,
+    "transactionType": "Outstanding",
+    "patientName": "John",
+    "invoiceNumber": 8814,
+    "date": "01/27/2017",
+    "balance": 100,
+    "amount": 100,
+    "method": "check",
+    "dateReceived": "2/10/2017",
+    "note": "this is a note"
   },
    {
-    invoiceId: 3,
-    transactionType: 'Paid',
-    patientName: 'Petter',
-    invoiceNumber: 8845,
-    date: '01/27/2017',
-    balance: 100,
-    amount: 100,
-    method: 'check',
-    dateReceived: '2/10/2017',
-    note: 'this is a note'
+    "invoiceId": 3,
+    "transactionType": "Paid",
+    "patientName": "Petter",
+    "invoiceNumber": 8845,
+    "date": "01/27/2017",
+    "balance": 100,
+    "amount": 100,
+    "method": "check",
+    "dateReceived": "2/10/2017",
+    "note": "this is a note"
   },
    {
-    invoiceId: 4,
-    transactionType: 'Outstanding',
-    patientName: 'Lana',
-    invoiceNumber: 88456,
-    date: '01/27/2017',
-    balance: 100,
-    amount: 100,
-    method: 'check',
-    dateReceived: '2/10/2017',
-    note: 'this is a note'
-  },
+    "invoiceId": 4,
+    "transactionType": "Outstanding",
+    "patientName": "Lana",
+    "invoiceNumber": 88456,
+    "date": "01/27/2017",
+    "balance": 100,
+    "amount": 100,
+    "method": "check",
+    "dateReceived": "2/10/2017",
+    "note": "this is a note"
+  }
 ]
